@@ -327,20 +327,67 @@
 </head>
 <body>
 
-<!-- Header with Logo Image -->
 <header class="container">
   <div class="logo">
-    <img src="natart.png" alt="NATART" style="height:50px;"/>
+    <a href="index.html">
+      <img src="natart.png" alt="NATART" class="main-logo">
+    </a>
   </div>
-  <nav>
-    <a href="#home" class="active">მთავარი</a>
-    <a href="#about">ჩვენს შესახებ</a>
-    <a href="#gallery">ნივთები</a>
-    <a href="#testimonials">შეფასება</a>
-    <a href="#contact">საკონტაქტო ინფორმაცია</a>
-  </nav>
-</header>
 
+  <nav>
+    <ul>
+      <li><a href="index.html">მთავარი</a></li>
+      <li><a href="#about">ჩვენს შესახებ</a></li>
+      <li><a href="#items">ნივთები</a></li>
+      <li><a href="#contact">კონტაქტი</a></li>
+    </ul>
+  </nav>
+
+  <style>
+    /* ჰედერის კონტეინერის გასწორება */
+    .container {
+      display: flex;
+      justify-content: space-between; /* ლოგო მარცხნივ, მენიუ მარჯვნივ */
+      align-items: center; /* ვერტიკალურად ცენტრში */
+      padding: 15px 5%;
+      background-color: #fffaf5; /* საიტის ნაზი ფონი */
+    }
+
+    /* ლოგოს სტილი */
+    .main-logo {
+      height: 80px; /* აქედან შეგიძლია აკონტროლო ზომა */
+      width: auto;
+      display: block;
+      /* mix-blend-mode მოაცილებს ნაცრისფერ ფონს, თუ PNG-ს კიდეები აქვს დარჩენილი */
+      mix-blend-mode: multiply; 
+      transition: transform 0.3s ease;
+    }
+
+    .main-logo:hover {
+      transform: scale(1.05); /* მაუსის მიტანისას ოდნავ დიდდება */
+    }
+
+    /* მენიუს სტილი (თუ არ გაქვს) */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #D4AF37; /* ოქროსფერი ტექსტი */
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #b8860b; /* მუქი ოქროსფერი გადატარებისას */
+    }
+  </style>
+</header>
 <!-- Hero -->
 <section id="home" class="hero">
   <div class="container">
