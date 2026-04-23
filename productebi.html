@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>პროდუქცია - NATART</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FFF5F5;
+      --bg-header: #FFE8E8;
+      --gold: #8B6508;
+      --gold-light: #C49A1A;
+      --text-dark: #4A4A4A;
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(139,101,8,0.1);
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      background-color: var(--bg-header);
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(139,101,8,0.07);
+    }
+
+    .logo-placeholder {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    /* ===== SHOP SECTION ===== */
+    .shop-container {
+      padding: 50px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .shop-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .shop-header p {
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+
+    /* Grid for 25 products */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .img-container {
+      width: 100%;
+      height: 240px;
+      background: #f0f0f0;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .order-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: var(--gold);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .order-btn:hover { background: #6e5006; }
+
+    footer {
+      background: var(--bg-header);
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; } /* მობილურისთვის შეგიძლიათ ჰამბურგერი დაამატოთ */
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo-placeholder">NATART</a>
+    <nav>
+      <a href="index.html">მთავარი</a>
+      <a href="index.html#about">ჩვენს შესახებ</a>
+      <a href="index.html#sets">ნივთები</a>
+      <a href="index.html#testimonials">შეფასება</a>
+      <a href="index.html#contact">საკონტაქტო ინფორმაცია</a>
+      <a href="producti.html" style="color: var(--gold);">პროდუქტები</a>
+    </nav>
+  </header>
+
+  <main class="shop-container">
+    <div class="shop-header">
+      <h1>სრული კოლექცია</h1>
+      <p>ნახეთ NATART-ის ყველა ხელნაკეთი ნაკეთობა ერთ სივრცეში</p>
+    </div>
+
+    <div class="products-grid" id="product-list">
+      </div>
+  </main>
+
+  <footer>
+    <p>© 2024 NATART. ყველა უფლება დაცულია.</p>
+  </footer>
+
+  <script>
+    // პროდუქტების სია (პირველი 4 რეალურია, დანარჩენი 21 Placeholder-ია)
+    const products = [
+      { name: "ანგელოზების სეტი", price: "40₾", img: "png" },
+      { name: "შემოდგომის სეტი", price: "40₾", img: "png" },
+      { name: "საშობაო სოფლის სეტი", price: "70₾", img: "png" },
+      { name: "ანგელოზები N2", price: "40₾", img: "png" },
+      // ავტომატურად ვამატებთ კიდევ 21 პროდუქტს 25-მდე შესავსებად
+      ...Array(21).fill().map((_, i) => ({
+        name: `ნაკეთობა #${i + 5}`,
+        price: "00₾",
+        img: "path/to/image.jpg" 
+      }))
+    ];
+
+    const grid = document.getElementById('product-list');
+
+    products.forEach(p => {
+      grid.innerHTML += `
+        <div class="product-card">
+          <div class="img-container">
+            <img src="${p.img}" alt="${p.name}" class="product-img">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">${p.name}</h3>
+            <p class="product-price">${p.price}</p>
+            <a href="index.html#contact" class="order-btn">შეკვეთა</a>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
