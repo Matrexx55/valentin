@@ -175,9 +175,99 @@
     #contact p { font-size: 0.95rem; color: var(--text-dark); margin-bottom: 10px; line-height: 1.8; }
     #contact a { color: var(--gold); text-decoration: none; }
     #contact a:hover { text-decoration: underline; }
-    .social-icons { margin-top: 24px; display: flex; justify-content: center; gap: 20px; }
-    .social-icons a { font-size: 1.6rem; transition: transform 0.2s; display: inline-block; }
-    .social-icons a:hover { transform: scale(1.2); }
+    /* ===== FLOATING CHAT BUTTON ===== */
+    .chat-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #fff;
+      font-size: 1.6rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(139,101,8,0.35);
+      z-index: 999;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .chat-fab:hover { background: #6e5006; transform: scale(1.08); }
+
+    /* ===== CHAT POPUP ===== */
+    .chat-popup {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 320px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 40px rgba(139,101,8,0.18);
+      z-index: 998;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+    }
+    .chat-popup.open { display: flex; }
+    .chat-popup-header {
+      background: var(--gold);
+      color: #fff;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .chat-popup .contact-form {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chat-popup .contact-form input,
+    .chat-popup .contact-form textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #f0d0d0;
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .chat-popup .contact-form input:focus,
+    .chat-popup .contact-form textarea:focus { border-color: var(--gold-light); }
+    .chat-popup .contact-form textarea { resize: vertical; }
+    .chat-popup .contact-form button {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 11px 0;
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .chat-popup .contact-form button:hover { background: #6e5006; }
+
+    @media (max-width: 480px) {
+      .chat-popup { width: calc(100vw - 32px); right: 16px; }
+      .chat-fab { bottom: 16px; right: 16px; }
+    }
 
     .card {
       background: var(--white);
@@ -515,12 +605,30 @@
     <section id="contact">
       <div class="contact-inner">
         <h2>საკონტაქტო ინფორმაცია</h2>
-        <p>📞 <a href="tel:+995500000000">+995 557604 756</a></p>
-        <p>📧 <a href="mailto:info@natart.ge">Natart@gmail.com</a></p>
+        <p>📞 <a href="tel:+995500000000">+995 577 604 756</a></p>
+        <p>📧 <a href="mailto:info@natart.ge">Netart2026@outlook.com</a></p>
         <p>📍 თბილისი, საქართველო</p>
-
       </div>
     </section>
+
+  </main>
+
+  <!-- ===== ჩატის ღილაკი (floating) ===== -->
+  <button class="chat-fab" id="chatFab" aria-label="დაგვიკავშირდით">💬</button>
+
+  <!-- ===== ჩატის popup ფორმა ===== -->
+  <div class="chat-popup" id="chatPopup">
+    <div class="chat-popup-header">
+      <span>დაგვიკავშირდით</span>
+      <button class="chat-close" id="chatClose">✕</button>
+    </div>
+    <form action="https://formspree.io/f/mzdyypbp" method="POST" class="contact-form">
+      <input type="text" name="სახელი" placeholder="თქვენი სახელი" required />
+      <input type="email" name="მეილი" placeholder="თქვენი მეილი" required />
+      <textarea name="შეტყობინება" placeholder="შეტყობინება" rows="4" required></textarea>
+      <button type="submit">გაგზავნა</button>
+    </form>
+  </div>
 
   </main>
 
@@ -536,7 +644,12 @@
     const nav = document.getElementById('main-nav');
     hamburger.addEventListener('click', () => nav.classList.toggle('open'));
 
-    // Smooth scroll
+    // Chat popup
+    const chatFab = document.getElementById('chatFab');
+    const chatPopup = document.getElementById('chatPopup');
+    const chatClose = document.getElementById('chatClose');
+    chatFab.addEventListener('click', () => chatPopup.classList.toggle('open'));
+    chatClose.addEventListener('click', () => chatPopup.classList.remove('open'));
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         const target = document.querySelector(link.getAttribute('href'));
