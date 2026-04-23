@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NATART - Modern Art</title>
+<!-- Google Fonts for a modern look -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    /* Rose background with texture using CSS gradient overlay */
+    background-color: #ffe4e1; /* Light rose base color */
+    background-image: 
+      radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+    color: #333; /* Dark text for contrast */
+    line-height: 1.6;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    color: #b8860b; /* Dark Gold */
+    letter-spacing: 2px;
+  }
+  nav {
+    display: flex;
+    gap: 30px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1em;
+    color: #555;
+    transition: color 0.3s, transform 0.3s;
+  }
+  nav a:hover {
+    color: #ffd700; /* Bright Gold on hover */
+    transform: translateY(-2px);
+  }
+
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+      url('https://images.unsplash.com/photo-1613659275734-19e1a1a0f7b4?ixlib=rb-4.0.1&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.8em;
+    color: #b8860b; /* Dark Gold */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #fff;
+  }
+  .hero p {
+    font-size: 1.5em;
+    max-width: 700px;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  .btn-primary {
+    background-color: #b8860b; /* Gold */
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover {
+    background-color: #a67c00; /* Darker gold */
+    transform: translateY(-2px);
+  }
+
+  /* Section styles */
+  section {
+    padding: 80px 20px;
+  }
+
+  /* About Section */
+  .about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .about-img {
+    flex: 1 1 45%;
+  }
+  .about-img img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+  }
+  .about-img img:hover {
+    transform: scale(1.05);
+  }
+  .about-text {
+    flex: 1 1 50%;
+  }
+  .about-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.6em;
+    margin-bottom: 20px;
+    color: #b8860b; /* Gold */
+  }
+  .about-text p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* Gallery / Collection */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .card-details {
+    padding: 20px;
+    text-align: center;
+  }
+  .card-details h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #b8860b; /* Gold */
+  }
+  .card-details p {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #555;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .testimonial {
+    background: #fafafa;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+  .testimonial p {
+    font-style: italic;
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  .testimonial cite {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95em;
+    text-align: right;
+    color: #777;
+  }
+
+  /* Footer styles */
+  footer {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  footer .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4em;
+    color: #b8860b; /* Gold */
+    margin-bottom: 15px;
+  }
+  footer p {
+    font-size: 1em;
+    margin: 10px 0;
+    color: #555;
+  }
+  .social-icons {
+    margin-top: 20px;
+  }
+  .social-icons a {
+    margin: 0 15px;
+    font-size: 1.5em;
+    color: #777;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .social-icons a:hover {
+    color: #b8860b; /* Gold on hover */
+    transform: scale(1.2);
+  }
+
+  /* Responsive */
+  @media(max-width: 768px) {
+    .about {
+      flex-direction: column;
+    }
+    .about-img, .about-text {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="container">
+  <div class="logo">NATART</div>
+  <nav>
+    <a href="#home" class="active">მთავარი</a>
+    <a href="#about">ჩვენს შესახებ</a>
+    <a href="#gallery">ნივთები</a>
+    <a href="#testimonials">შეფასება</a>
+    <a href="#contact">საკონტაქტო ინფორმაცია</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="container">
+    <h1>მოძებნეთ ART'ი</h1>
+    <p>შეცვალეთ თქვენი სივრცე ხელნაკეთი თაბაშირის შედევრებით. თანამედროვე, ელეგანტური, მარადიული.</p>
+    <button class="btn-primary" onclick="window.location='#gallery'">ნივთები</button>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container about">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1613659275734-19e1a1a0f7b4?ixlib=rb-4.0.1&auto=format&fit=crop&w=1600&q=80" alt="Artisans working" />
+    </div>
+    <div class="about-text">
+      <h2>NATART'ის შესახებ</h2>
+      <p>ჩვენ ვქმნით ინოვაციურ თაბაშირის ხელოვნებას თანამედროვე შეხებით. ჩვენ ვაერთიანებენ ტრადიციას და თანამედროვე დიზაინს, რათა შევქმნათ უნიკალური ნამუშევრები, რომლებიც ამაღლებს თქვენს ინტერიერის ესთეტიკას. განიცადეთ ოსტატობა, როგორც არასდროს.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery / Collection -->
+<section id="gallery" style="background-color:#fff; padding:80px 20px;">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center; color:#b8860b;">ჩვენი სეტები</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1595433567340-55d8b8d9a5f6?ixlib=rb-4.0.1&auto=format&fit=crop&w=800&q=80" alt="Bust Sculpture" />
+        <div class="card-details">
+          <h3>ანგელოზების სეტი</h3>
+          <p>40₾</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1612990570050-efa9b8b0e687?ixlib=rb-4.0.1&auto=format&fit=crop&w=800&q=80" alt="Relief Panel" />
+        <div class="card-details">
+          <h3>შემოდგომის სეტი</h3>
+          <p>40₾</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1607980525646-0a94a0e1ba40?ixlib=rb-4.0.1&auto=format&fit=crop&w=800&q=80" alt="Wall Plaque" />
+        <div class="card-details">
+          <h3>საშობაო სოფელის სეტი</h3>
+          <p>70₾</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" style="padding:80px 20px;">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center; color:#b8860b;">ჩვენი მომხმარებლების შეფასება</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"აბსოლუტურად განსაცვიფრებელი! NATART-ის ნამუშევრები თანამედროვე და მაღალი ხარისხისაა"</p>
+        <cite>- ა.გ</cite>
+      </div>
+      <div class="testimonial">
+        <p>"უნიკალური ხელოვნება, რომელიც გარდაქმნის ჩემს სახლს. გიწევთ რეკომენდაციას."</p>
+        <cite>- ს.გ.</cite>
+      </div>
+      <div class="testimonial">
+        <p>"განსაკუთრებული ოსტატობა და თანამედროვე დიზაინი. მიყვარს!"</p>
+        <cite>- ლ.ლ</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="background-color:#fff; padding:80px 20px; text-align:center;">
+  <h2 class="section-title" style="color:#b8860b;">შეკვეთებისათვის დაგვიკავშირდით,ასევე ვამზადებთ არასტანდარტულ შეკვეთებსაც</h2>
+  <p style="margin-bottom:20px;">Email: Natart@gmail.com | Phone: +995577604756</p>
+  <div class="social-icons">
+    <a href="#">🌐</a>
+    <a href="#">📷</a>
+    <a href="#">🐦</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="logo">NATART</div>
+    <p>&copy; 2026 NATART. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
