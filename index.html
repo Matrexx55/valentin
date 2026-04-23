@@ -246,22 +246,92 @@
     transform: scale(1.2);
   }
 
-  /* Responsive */
+  /* Responsive Styles */
   @media(max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+
+    header {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+    }
+
+    .logo {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.9em;
+    }
+
+    .hero {
+      padding: 40px 10px;
+    }
+
+    .hero h1 {
+      font-size: 2em;
+    }
+
+    .hero p {
+      font-size: 1em;
+    }
+
+    section {
+      padding: 40px 10px;
+    }
+
     .about {
       flex-direction: column;
+      align-items: center;
     }
+
     .about-img, .about-text {
       flex: 1 1 100%;
+      text-align: center;
+    }
+
+    .about-img img {
+      max-width: 90%;
+      height: auto;
+    }
+
+    /* Gallery grid on mobile */
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+
+    /* Testimonials grid on mobile */
+    .testimonials {
+      grid-template-columns: 1fr;
+    }
+
+    /* Footer adjustments */
+    footer {
+      padding: 30px 10px;
+    }
+
+    .social-icons a {
+      font-size: 1.2em;
     }
   }
 </style>
 </head>
 <body>
 
-<!-- Header -->
+<!-- Header with Logo Image -->
 <header class="container">
-  <div class="logo">NATART</div>
+  <div class="logo">
+    <img src="path/to/your/logo.png" alt="NATART Logo" style="height:50px;"/>
+  </div>
   <nav>
     <a href="#home" class="active">მთავარი</a>
     <a href="#about">ჩვენს შესახებ</a>
