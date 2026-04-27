@@ -102,11 +102,6 @@
       margin-bottom: 10px;
     }
 
-    .shop-header p {
-      margin-bottom: 40px;
-      opacity: 0.8;
-    }
-
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -123,18 +118,13 @@
       flex-direction: column;
     }
 
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
+    .product-card:hover { transform: translateY(-5px); }
 
     .img-container {
       width: 100%;
       height: 240px;
       background: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
+      overflow: hidden;
     }
 
     .product-img {
@@ -158,191 +148,35 @@
       margin-bottom: 8px;
     }
 
-    .product-price {
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 15px;
-    }
+    .product-price { font-weight: 600; color: #333; margin-bottom: 15px; }
 
     .btn-add {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background: var(--gold);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-add:hover { background: #6e5006; }
-
-    footer {
-      background: var(--bg-header);
-      text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      font-size: 0.85rem;
-      opacity: 0.7;
+      display: block; width: 100%; padding: 10px;
+      background: var(--gold); color: white; border: none;
+      border-radius: 8px; cursor: pointer; font-weight: 600;
     }
 
     .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6);
+      z-index: 1000; align-items: center; justify-content: center;
     }
-
     .modal.show { display: flex; }
-
     .modal-content {
-      background: var(--white);
-      border-radius: var(--radius);
-      max-width: 600px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
+      background: var(--white); border-radius: var(--radius);
+      max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;
     }
-
-    .modal-header {
-      background: var(--gold);
-      color: white;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .modal-body {
-      padding: 30px;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .empty-cart {
-      text-align: center;
-      padding: 50px 20px;
-      color: #999;
-    }
-
-    .empty-cart i {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      opacity: 0.5;
-    }
-
-    .cart-items { margin-bottom: 20px; }
+    .modal-header { background: var(--gold); color: white; padding: 15px; display: flex; justify-content: space-between; }
+    .modal-body { padding: 20px; }
 
     .cart-item {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 15px;
-      padding: 15px;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid #eee;
     }
-
-    .item-name { font-weight: 600; }
-    .item-price { text-align: center; font-weight: 600; }
-
-    .qty-control {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .qty-btn {
-      background: var(--gold);
-      color: white;
-      border: none;
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .qty-btn:hover { background: #6e5006; }
-
-    .remove-btn {
-      background: #d32f2f;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      width: 100%;
-    }
-
-    .remove-btn:hover { background: #b71c1c; }
-
-    .cart-summary {
-      background: var(--bg);
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .summary-row.total {
-      border-top: 2px solid var(--gold);
-      padding-top: 10px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .checkout-btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--gold);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .checkout-btn:hover { background: #6e5006; }
+    
+    .qty-btn { background: #eee; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
 
     @media (max-width: 768px) {
-      nav { display: none; }
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     }
   </style>
@@ -353,11 +187,8 @@
     <a href="index.html" class="logo-placeholder">NATART</a>
     <nav>
       <a href="index.html">მთავარი</a>
-      <a href="index.html#about">ჩვენს შესახებ</a>
-      <a href="index.html#testimonials">შეფასება</a>
-      <a href="index.html#contact">საკონტაქტო ინფორმაცია</a>
       <a href="productebi.html" style="color: var(--gold);">პროდუქტები</a>
-      <div class="cart-icon" id="cartIcon" title="კალათა">
+      <div class="cart-icon" id="cartIcon">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cartCount">0</span>
       </div>
@@ -367,50 +198,49 @@
   <main class="shop-container">
     <div class="shop-header">
       <h1>სრული კოლექცია</h1>
-      <p>ნახეთ NATART-ის ყველა ხელნაკეთი ნაკეთობა ერთ სივრცეში</p>
+      <p>ნახეთ NATART-ის ყველა ხელნაკეთი ნაკეთობა</p>
     </div>
-
     <div class="products-grid" id="product-list"></div>
   </main>
 
   <div class="modal" id="cartModal">
     <div class="modal-content">
       <div class="modal-header">
-        🛒 კალათა
-        <button class="modal-close" id="cartClose">✕</button>
+        <span>🛒 კალათა</span>
+        <button onclick="closeModal()" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">✕</button>
       </div>
       <div class="modal-body">
         <div id="cartItemsContainer"></div>
-        <div id="cartSummaryContainer"></div>
+        <div id="cartSummaryContainer" style="margin-top:20px; border-top:2px solid var(--gold); padding-top:15px;"></div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <p>© 2024 NATART. ყველა უფლება დაცულია.</p>
-  </footer>
-
   <script>
-const products = [
-      { name: "ანგელოზების სეტი", price: "00₾", img: "male.png" },
-      { name: "შემოდგომის სეტი", price: "00₾", img: "male.png" },
-      { name: "საშობაო სოფლის სეტი", price: "00₾", img: "male.png" },
-      { name: "ანგელოზები N2", price: "00₾", img: "male.png" },
-      // ავტომატურად ვამატებთ კიდევ 21 პროდუქტს 25-მდე შესავსებად
+    // 1. პროდუქტების მასივი (გასწორებული ID და ფასები)
+    const products = [
+      { id: 1, name: "ანგელოზების სეტი", price: 40, img: "male.png" },
+      { id: 2, name: "შემოდგომის სეტი", price: 40, img: "male.png" },
+      { id: 3, name: "საშობაო სოფლის სეტი", price: 70, img: "male.png" },
+      { id: 4, name: "ანგელოზები N2", price: 40, img: "male.png" },
       ...Array(21).fill().map((_, i) => ({
+        id: i + 5,
         name: `ნაკეთობა #${i + 5}`,
-        price: "00₾",
+        price: 25,
         img: "male.png" 
       }))
     ];
 
     let cart = JSON.parse(localStorage.getItem('natartCart')) || [];
 
+    // 2. პროდუქტების გამოტანა (აქ p.img გამოვიყენე p.emoji-ს ნაცვლად)
     function renderProducts() {
       const grid = document.getElementById('product-list');
       grid.innerHTML = products.map(p => `
         <div class="product-card">
-          <div class="img-container">${p.emoji}</div>
+          <div class="img-container">
+            <img src="${p.img}" class="product-img" onerror="this.src='https://via.placeholder.com/250'">
+          </div>
           <div class="product-info">
             <h3 class="product-name">${p.name}</h3>
             <p class="product-price">${p.price}₾</p>
@@ -434,28 +264,18 @@ const products = [
 
       saveCart();
       updateCartCount();
+      renderCart();
       document.getElementById('cartModal').classList.add('show');
-      renderCart();
     }
 
-    function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
-      saveCart();
-      renderCart();
-      updateCartCount();
-    }
-
-    function changeQty(productId, change) {
+    function changeQty(productId, delta) {
       const item = cart.find(p => p.id === productId);
       if (item) {
-        item.qty += change;
-        if (item.qty <= 0) {
-          removeFromCart(productId);
-        } else {
-          saveCart();
-          renderCart();
-          updateCartCount();
-        }
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(p => p.id !== productId);
+        saveCart();
+        updateCartCount();
+        renderCart();
       }
     }
 
@@ -464,84 +284,56 @@ const products = [
       const summaryDiv = document.getElementById('cartSummaryContainer');
 
       if (cart.length === 0) {
-        itemsDiv.innerHTML = '<div class="empty-cart"><i class="fas fa-shopping-cart"></i><p>კალათა ცარიელია</p></div>';
+        itemsDiv.innerHTML = '<p style="text-align:center">კალათა ცარიელია</p>';
         summaryDiv.innerHTML = '';
         return;
       }
 
-      itemsDiv.innerHTML = `
-        <div class="cart-items">
-          ${cart.map(item => `
-            <div class="cart-item">
-              <div>${item.emoji} ${item.name}</div>
-              <div class="item-price">${item.price}₾</div>
-              <div style="text-align: right;">
-                <div style="margin-bottom: 8px; font-weight: 600;">${item.price * item.qty}₾</div>
-                <div class="qty-control">
-                  <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
-                  <span style="min-width: 20px; text-align: center;">${item.qty}</span>
-                  <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
-                </div>
-              </div>
-              <button class="remove-btn" onclick="removeFromCart(${item.id})">წაშლა</button>
-            </div>
-          `).join('')}
+      itemsDiv.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div>
+            <div style="font-weight:600">${item.name}</div>
+            <div style="font-size:0.8rem; color:var(--gold)">${item.price}₾</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px">
+            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+            <b style="min-width:40px; text-align:right">${item.price * item.qty}₾</b>
+          </div>
         </div>
-      `;
+      `).join('');
 
-      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      const delivery = 10;
-      const total = subtotal + delivery;
-
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       summaryDiv.innerHTML = `
-        <div class="cart-summary">
-          <div class="summary-row"><span>ქვესულ:</span><span>${subtotal}₾</span></div>
-          <div class="summary-row"><span>მიწოდება:</span><span>${delivery}₾</span></div>
-          <div class="summary-row total"><span>სულ:</span><span>${total}₾</span></div>
+        <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:15px">
+          <span>ჯამი:</span> <span>${total}₾</span>
         </div>
-        <button class="checkout-btn" onclick="goToCheckout(${total})">
-          <i class="fas fa-credit-card"></i> შეკვეთა
-        </button>
+        <button class="btn-add" style="width:100%; padding:15px" onclick="checkout()">შეკვეთის გაფორმება</button>
       `;
     }
 
-    function goToCheckout(total) {
-      const orderText = cart.map(item => `${item.emoji} ${item.name} - ${item.qty}x${item.price}₾ = ${item.price * item.qty}₾`).join('\n');
-      const fullMessage = `📦 ჩემი შეკვეთა:\n\n${orderText}\n\n💰 სულ: ${total}₾`;
-
-      localStorage.setItem('natartCheckoutMessage', fullMessage);
-      localStorage.setItem('natartCheckoutTotal', total);
-      window.location.href = 'index.html?checkout=true';
+    function checkout() {
+      const orderText = cart.map(item => `${item.name} (${item.qty}ც) - ${item.price * item.qty}₾`).join('\n');
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      alert("თქვენი შეკვეთა:\n" + orderText + "\n\nსულ: " + total + "₾\n\n(აქ შეგიძლიათ დაამატოთ ფორმაზე გადასვლა)");
     }
 
-    function saveCart() {
-      localStorage.setItem('natartCart', JSON.stringify(cart));
-    }
-
+    function saveCart() { localStorage.setItem('natartCart', JSON.stringify(cart)); }
     function updateCartCount() {
       const count = cart.reduce((sum, item) => sum + item.qty, 0);
       document.getElementById('cartCount').textContent = count;
     }
+    function closeModal() { document.getElementById('cartModal').classList.remove('show'); }
 
-    document.getElementById('cartIcon').addEventListener('click', () => {
-      document.getElementById('cartModal').classList.add('show');
+    document.getElementById('cartIcon').onclick = () => {
       renderCart();
-    });
+      document.getElementById('cartModal').classList.add('show');
+    };
 
-    document.getElementById('cartClose').addEventListener('click', () => {
-      document.getElementById('cartModal').classList.remove('show');
-    });
-
-    document.getElementById('cartModal').addEventListener('click', (e) => {
-      if (e.target.id === 'cartModal') {
-        document.getElementById('cartModal').classList.remove('show');
-      }
-    });
-
+    // სტარტი
     renderProducts();
     updateCartCount();
-    renderCart();
   </script>
-
 </body>
 </html>
