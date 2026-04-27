@@ -7,7 +7,6 @@
   <title>NATART – ხელოვნება თაბაშირით</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    /* ===== CSS Variables ===== */
     :root {
       --bg: #FFF5F5;
       --bg-header: #FFE8E8;
@@ -19,17 +18,13 @@
       --shadow: 0 4px 24px rgba(139,101,8,0.08);
       --radius: 14px;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Jost', sans-serif;
       background-color: var(--bg);
       color: var(--text-dark);
       line-height: 1.7;
     }
-
-    /* ===== HEADER / NAV ===== */
     header {
       background-color: var(--bg-header);
       padding: 18px 5%;
@@ -41,12 +36,7 @@
       z-index: 100;
       box-shadow: 0 2px 12px rgba(139,101,8,0.07);
     }
-
-    .logo img {
-      height: 52px;
-      object-fit: contain;
-    }
-
+    .logo img { height: 52px; object-fit: contain; }
     .logo-placeholder {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.9rem;
@@ -54,14 +44,12 @@
       color: var(--gold);
       letter-spacing: 3px;
     }
-
     nav {
       display: flex;
       gap: 32px;
       list-style: none;
       align-items: center;
     }
-
     nav a {
       text-decoration: none;
       color: var(--text-dark);
@@ -70,16 +58,13 @@
       letter-spacing: 0.5px;
       transition: color 0.2s;
     }
-
     nav a:hover { color: var(--gold); }
-
     .cart-icon {
       position: relative;
       cursor: pointer;
       font-size: 1.5rem;
       color: var(--gold);
     }
-
     .cart-count {
       position: absolute;
       top: -8px;
@@ -95,8 +80,6 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
-
-    /* Hamburger (mobile) */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -113,13 +96,10 @@
       border-radius: 2px;
       transition: 0.3s;
     }
-
-    /* ===== PRODUCTS SECTION ===== */
     #sets {
       padding: 36px 5% 70px;
       text-align: center;
     }
-
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem;
@@ -130,7 +110,6 @@
       position: relative;
       display: inline-block;
     }
-
     .section-title::after {
       content: '';
       display: block;
@@ -139,7 +118,6 @@
       background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
       margin: 10px auto 0;
     }
-
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -147,8 +125,6 @@
       max-width: 960px;
       margin: 0 auto;
     }
-
-    /* ===== HERO ===== */
     .hero {
       padding: 90px 5%;
       text-align: center;
@@ -183,8 +159,6 @@
       transition: background-color 0.25s, transform 0.2s;
     }
     .btn-primary:hover { background-color: #6e5006; transform: translateY(-2px); }
-
-    /* ===== CONTACT ===== */
     #contact {
       padding: 70px 5%;
       background: var(--white);
@@ -200,8 +174,6 @@
     #contact p { font-size: 0.95rem; color: var(--text-dark); margin-bottom: 10px; line-height: 1.8; }
     #contact a { color: var(--gold); text-decoration: none; }
     #contact a:hover { text-decoration: underline; }
-
-    /* ===== FLOATING CHAT BUTTON ===== */
     .chat-fab {
       position: fixed;
       bottom: 28px;
@@ -219,14 +191,11 @@
       transition: transform 0.2s, background 0.2s;
     }
     .chat-fab:hover { background: #6e5006; transform: scale(1.08); }
-
-    /* ===== CHAT POPUP ===== */
     .chat-popup {
       position: fixed;
       bottom: 100px;
       right: 28px;
-      width: 400px;
-      max-height: 600px;
+      width: 320px;
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: 0 12px 40px rgba(139,101,8,0.18);
@@ -246,7 +215,6 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem;
       font-weight: 600;
-      flex-shrink: 0;
     }
     .chat-close {
       background: none;
@@ -261,8 +229,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      overflow-y: auto;
-      flex: 1;
     }
     .chat-popup .contact-form input,
     .chat-popup .contact-form textarea {
@@ -279,7 +245,7 @@
     }
     .chat-popup .contact-form input:focus,
     .chat-popup .contact-form textarea:focus { border-color: var(--gold-light); }
-    .chat-popup .contact-form textarea { resize: none; }
+    .chat-popup .contact-form textarea { resize: vertical; }
     .chat-popup .contact-form button {
       background: var(--gold);
       color: #fff;
@@ -293,7 +259,6 @@
       transition: background 0.2s;
     }
     .chat-popup .contact-form button:hover { background: #6e5006; }
-
     .order-info {
       background: #fff8e8;
       padding: 12px;
@@ -302,13 +267,13 @@
       font-size: 0.85rem;
       color: #666;
       border-left: 4px solid var(--gold);
+      max-height: 150px;
+      overflow-y: auto;
     }
-
     @media (max-width: 480px) {
-      .chat-popup { width: calc(100vw - 32px); right: 16px; max-width: 100%; }
+      .chat-popup { width: calc(100vw - 32px); right: 16px; }
       .chat-fab { bottom: 16px; right: 16px; }
     }
-
     .card {
       background: var(--white);
       border-radius: var(--radius);
@@ -316,12 +281,10 @@
       overflow: hidden;
       transition: transform 0.25s, box-shadow 0.25s;
     }
-
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 36px rgba(139,101,8,0.13);
     }
-
     .card-img {
       width: 100%;
       height: 200px;
@@ -329,26 +292,10 @@
       display: block;
       background: #f5dada;
     }
-
-    /* Placeholder image */
-    .card-img-placeholder {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #ffe0e0 0%, #ffd6b0 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-
     .card-body {
       padding: 20px 22px 24px;
       text-align: left;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
     }
-
     .card-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
@@ -356,14 +303,12 @@
       color: var(--gold);
       margin-bottom: 8px;
     }
-
     .card-price {
       font-size: 1.1rem;
       font-weight: 500;
       color: #2a2a2a;
       margin-bottom: 15px;
     }
-
     .btn-add {
       background: var(--gold);
       color: white;
@@ -373,17 +318,14 @@
       cursor: pointer;
       font-size: 0.9rem;
       font-weight: 600;
+      width: 100%;
       transition: background 0.2s;
     }
-
     .btn-add:hover { background: #6e5006; }
-
-    /* ===== ABOUT SECTION ===== */
     #about {
       padding: 70px 5%;
       background: var(--white);
     }
-
     .about-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -392,7 +334,6 @@
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .about-img {
       width: 100%;
       border-radius: var(--radius);
@@ -401,18 +342,6 @@
       aspect-ratio: 4/3;
       background: linear-gradient(135deg, #ffe8c2 0%, #ffd6e0 100%);
     }
-
-    .about-img-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, #ffe8c2 0%, #ffd6e0 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-    }
-
     .about-text h2 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
@@ -421,20 +350,16 @@
       margin-bottom: 20px;
       line-height: 1.2;
     }
-
     .about-text p {
       font-size: 0.95rem;
       color: var(--text-dark);
       text-align: left;
       line-height: 1.8;
     }
-
-    /* ===== TESTIMONIALS ===== */
     #testimonials {
       padding: 70px 5%;
       text-align: center;
     }
-
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -442,7 +367,6 @@
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .testimonial-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -454,9 +378,7 @@
       justify-content: space-between;
       transition: transform 0.2s;
     }
-
     .testimonial-card:hover { transform: translateY(-4px); }
-
     .testimonial-text {
       font-size: 0.9rem;
       color: var(--text-dark);
@@ -464,10 +386,8 @@
       font-style: italic;
       margin-bottom: 18px;
     }
-
     .testimonial-text::before { content: '❝ '; color: var(--gold-light); }
     .testimonial-text::after  { content: ' ❞'; color: var(--gold-light); }
-
     .testimonial-author {
       font-size: 0.85rem;
       font-weight: 600;
@@ -475,8 +395,6 @@
       text-align: right;
       letter-spacing: 0.5px;
     }
-
-    /* ===== FOOTER ===== */
     footer {
       background: var(--bg-header);
       text-align: center;
@@ -485,8 +403,6 @@
       color: #999;
       letter-spacing: 0.3px;
     }
-
-    /* ===== CART MODAL ===== */
     .modal {
       display: none;
       position: fixed;
@@ -500,9 +416,7 @@
       justify-content: center;
       padding: 20px;
     }
-
     .modal.show { display: flex; }
-
     .modal-content {
       background: var(--white);
       border-radius: var(--radius);
@@ -510,16 +424,9 @@
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      animation: slideUp 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     .modal-header {
       background: var(--gold);
       color: white;
@@ -532,7 +439,6 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-
     .modal-close {
       background: none;
       border: none;
@@ -541,29 +447,22 @@
       cursor: pointer;
       line-height: 1;
     }
-
     .modal-body {
       padding: 30px;
       flex: 1;
       overflow-y: auto;
     }
-
     .empty-cart {
       text-align: center;
       padding: 50px 20px;
       color: #999;
     }
-
     .empty-cart i {
       font-size: 3rem;
       margin-bottom: 20px;
       opacity: 0.5;
     }
-
-    .cart-items {
-      margin-bottom: 20px;
-    }
-
+    .cart-items { margin-bottom: 20px; }
     .cart-item {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
@@ -574,23 +473,14 @@
       margin-bottom: 12px;
       align-items: center;
     }
-
-    .item-name {
-      font-weight: 600;
-    }
-
-    .item-price {
-      text-align: center;
-      font-weight: 600;
-    }
-
+    .item-name { font-weight: 600; }
+    .item-price { text-align: center; font-weight: 600; }
     .qty-control {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
-
     .qty-btn {
       background: var(--gold);
       color: white;
@@ -601,9 +491,7 @@
       cursor: pointer;
       font-size: 0.9rem;
     }
-
     .qty-btn:hover { background: #6e5006; }
-
     .remove-btn {
       background: #d32f2f;
       color: white;
@@ -614,22 +502,18 @@
       font-size: 0.75rem;
       width: 100%;
     }
-
     .remove-btn:hover { background: #b71c1c; }
-
     .cart-summary {
       background: var(--bg);
       padding: 20px;
       border-radius: 8px;
       margin-bottom: 20px;
     }
-
     .summary-row {
       display: flex;
       justify-content: space-between;
       margin-bottom: 10px;
     }
-
     .summary-row.total {
       border-top: 2px solid var(--gold);
       padding-top: 10px;
@@ -637,7 +521,6 @@
       font-weight: 700;
       color: var(--gold);
     }
-
     .checkout-btn {
       width: 100%;
       padding: 16px;
@@ -649,28 +532,15 @@
       font-weight: 600;
       cursor: pointer;
     }
-
     .checkout-btn:hover { background: #6e5006; }
-
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       nav { display: none; flex-direction: column; }
       nav.open { display: flex; }
       .hamburger { display: flex; }
-
-      .cards-grid,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
+      .cards-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
       .section-title { font-size: 1.9rem; }
     }
-
     @media (max-width: 480px) {
       header { padding: 14px 4%; }
       #sets, #about, #testimonials { padding: 50px 4%; }
@@ -678,44 +548,32 @@
   </style>
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
   <header>
-    <!-- მარცხნივ: ლოგო -->
     <div class="logo">
       <span class="logo-placeholder">NATART</span>
     </div>
-
-    <!-- მარჯვნივ: ნავიგაცია -->
     <nav id="main-nav">
       <a href="#sets">სეტები</a>
       <a href="#testimonials">შეფასება</a>
       <a href="#contact">საკონტაქტო ინფორმაცია</a>
       <a href="#about">ჩვენს შესახებ</a>
-      <a href="producti.html">ნივთები</a>
+      <a href="productebi.html">ნივთები</a>
       <div class="cart-icon" id="cartIcon" title="კალათა">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cartCount">0</span>
       </div>
     </nav>
-
-    <!-- მობილური ჰამბურგერი -->
     <button class="hamburger" id="hamburger" aria-label="მენიუ">
       <span></span><span></span><span></span>
     </button>
   </header>
 
   <main>
-
-    <!-- ===== პროდუქტების გალერეა ===== -->
     <section id="sets">
       <h2 class="section-title">ჩვენი სეტები</h2>
-
       <div class="cards-grid">
-
-        <!-- ბარათი 1 -->
         <article class="card">
-          <div class="card-img-placeholder">👼</div>
+          <img class="card-img" src="angelozebi.png" alt="ანგელოზების სეტი" />
           <div class="card-body">
             <div class="card-title">ანგელოზების სეტი</div>
             <div class="card-price">40₾</div>
@@ -724,10 +582,8 @@
             </button>
           </div>
         </article>
-
-        <!-- ბარათი 2 -->
         <article class="card">
-          <div class="card-img-placeholder">🍂</div>
+          <img class="card-img" src="shemodgoma.png" alt="შემოდგომის სეტი" />
           <div class="card-body">
             <div class="card-title">შემოდგომის სეტი</div>
             <div class="card-price">40₾</div>
@@ -736,10 +592,8 @@
             </button>
           </div>
         </article>
-
-        <!-- ბარათი 3 -->
         <article class="card">
-          <div class="card-img-placeholder">🎄</div>
+          <img class="card-img" src="sashobao.png" alt="საშობაო სოფლის სეტი" />
           <div class="card-body">
             <div class="card-title">საშობაო სოფლის სეტი</div>
             <div class="card-price">70₾</div>
@@ -748,10 +602,8 @@
             </button>
           </div>
         </article>
-
-        <!-- ბარათი 4 -->
         <article class="card">
-          <div class="card-img-placeholder">👼</div>
+          <img class="card-img" src="angelozebi2.png" alt="სეტი 4" />
           <div class="card-body">
             <div class="card-title">ანგელოზები სეტი N2</div>
             <div class="card-price">40₾</div>
@@ -760,10 +612,8 @@
             </button>
           </div>
         </article>
-
-        <!-- ბარათი 5 -->
         <article class="card">
-          <div class="card-img-placeholder">🐚</div>
+          <img class="card-img" src="male.png" alt="სეტი 5" />
           <div class="card-body">
             <div class="card-title">სეტი 5</div>
             <div class="card-price">35₾</div>
@@ -772,10 +622,8 @@
             </button>
           </div>
         </article>
-
-        <!-- ბარათი 6 -->
         <article class="card">
-          <div class="card-img-placeholder">🎃</div>
+          <img class="card-img" src="male.png" alt="სეტი 6" />
           <div class="card-body">
             <div class="card-title">სეტი 6</div>
             <div class="card-price">45₾</div>
@@ -784,18 +632,12 @@
             </button>
           </div>
         </article>
-
       </div>
     </section>
 
-    <!-- ===== NATART-ის შესახებ ===== -->
     <section id="about">
       <div class="about-inner">
-
-        <!-- მარცხენა სვეტი: სურათი -->
-        <div class="about-img-placeholder">🎨</div>
-
-        <!-- მარჯვენა სვეტი: ტექსტი -->
+        <img class="about-img" src="agwera.png" alt="Artisans working" />
         <div class="about-text">
           <h2>NATART-ის შესახებ</h2>
           <p>
@@ -807,17 +649,12 @@
             და დეტალებზე ყურადღებით.
           </p>
         </div>
-
       </div>
     </section>
 
-    <!-- ===== მომხმარებლების შეფასებები ===== -->
     <section id="testimonials">
       <h2 class="section-title">ჩვენი მომხმარებლების შეფასება</h2>
-
       <div class="testimonials-grid">
-
-        <!-- შეფასება 1 -->
         <article class="testimonial-card">
           <p class="testimonial-text">
             ძალიან მომეწონა ანგელოზების სეტი! ხარისხი შესანიშნავია და მიწოდება სწრაფი
@@ -825,8 +662,6 @@
           </p>
           <div class="testimonial-author">— ნ.კ.</div>
         </article>
-
-        <!-- შეფასება 2 -->
         <article class="testimonial-card">
           <p class="testimonial-text">
             საშობაო სოფლის სეტი სახლს ზღაპრულ სახეს აძლევს. ყველა სტუმარს ძალიან
@@ -834,8 +669,6 @@
           </p>
           <div class="testimonial-author">— მ.ბ.</div>
         </article>
-
-        <!-- შეფასება 3 -->
         <article class="testimonial-card">
           <p class="testimonial-text">
             შემოდგომის სეტი ჩუქებად ვიყიდე და საჩუქრის მიმღები ძალიან გახარდა.
@@ -843,43 +676,34 @@
           </p>
           <div class="testimonial-author">— თ.ა.</div>
         </article>
-
       </div>
     </section>
 
-    <!-- ===== საკონტაქტო ინფორმაცია ===== -->
     <section id="contact">
       <div class="contact-inner">
         <h2>საკონტაქტო ინფორმაცია</h2>
-        
         <p>
           <i class="fas fa-phone"></i> 
           <a href="tel:+995577604756">+995 577 604 756</a>
         </p>
-        
         <p>
           <i class="fas fa-envelope"></i> 
           <a href="mailto:natart2026@outlook.com">Natart2026@outlook.com</a>
         </p>
-        
         <p>
           <i class="fab fa-instagram"></i> 
           <a href="https://instagram.com/natart_ge" target="_blank">გამოგვყევით Instagram'ზე</a>
         </p>
-        
         <p>
           <i class="fas fa-map-marker-alt"></i> 
           თბილისი, საქართველო
         </p>
       </div>
     </section>
-
   </main>
 
-  <!-- ===== ჩატის ღილაკი (floating) ===== -->
   <button class="chat-fab" id="chatFab" aria-label="დაგვიკავშირდით">💬</button>
 
-  <!-- ===== CART MODAL ===== -->
   <div class="modal" id="cartModal">
     <div class="modal-content">
       <div class="modal-header">
@@ -893,7 +717,6 @@
     </div>
   </div>
 
-  <!-- ===== ჩატის popup ფორმა ===== -->
   <div class="chat-popup" id="chatPopup">
     <div class="chat-popup-header">
       <span>დაგვიკავშირდით</span>
@@ -908,33 +731,26 @@
     </form>
   </div>
 
-  <!-- ===== FOOTER ===== -->
   <footer>
     <p>© 2024 NATART. ყველა უფლება დაცულია.</p>
   </footer>
 
-  <!-- ===== JS ===== -->
   <script>
-    // ===== CART STATE =====
     let cart = JSON.parse(localStorage.getItem('natartCart')) || [];
 
-    // ===== ADD TO CART =====
     function addToCart(product) {
       const existing = cart.find(item => item.id === product.id);
-      
       if (existing) {
         existing.qty++;
       } else {
         cart.push({ ...product, qty: 1 });
       }
-      
       saveCart();
       updateCartCount();
       document.getElementById('cartModal').classList.add('show');
       renderCart();
     }
 
-    // ===== REMOVE FROM CART =====
     function removeFromCart(productId) {
       cart = cart.filter(item => item.id !== productId);
       saveCart();
@@ -942,7 +758,6 @@
       updateCartCount();
     }
 
-    // ===== UPDATE QUANTITY =====
     function changeQty(productId, change) {
       const item = cart.find(p => p.id === productId);
       if (item) {
@@ -957,7 +772,6 @@
       }
     }
 
-    // ===== RENDER CART =====
     function renderCart() {
       const itemsDiv = document.getElementById('cartItemsContainer');
       const summaryDiv = document.getElementById('cartSummaryContainer');
@@ -1004,7 +818,6 @@
       `;
     }
 
-    // ===== GO TO CHECKOUT =====
     function goToCheckout(total) {
       const orderText = cart.map(item => `${item.emoji} ${item.name} - ${item.qty}x${item.price}₾ = ${item.price * item.qty}₾`).join('\n');
       const fullMessage = `📦 ჩემი შეკვეთა:\n\n${orderText}\n\n💰 სულ: ${total}₾`;
@@ -1030,18 +843,15 @@
       updateCartCount();
     }
 
-    // ===== SAVE CART =====
     function saveCart() {
       localStorage.setItem('natartCart', JSON.stringify(cart));
     }
 
-    // ===== UPDATE CART COUNT =====
     function updateCartCount() {
       const count = cart.reduce((sum, item) => sum + item.qty, 0);
       document.getElementById('cartCount').textContent = count;
     }
 
-    // ===== EVENT LISTENERS =====
     document.getElementById('cartIcon').addEventListener('click', () => {
       document.getElementById('cartModal').classList.add('show');
       renderCart();
@@ -1078,22 +888,22 @@
       });
     });
 
-    // ===== CHECK IF COMING FROM CHECKOUT =====
+    updateCartCount();
+    renderCart();
+
+    // CHECK IF COMING FROM CHECKOUT
     function checkForCheckout() {
       const params = new URLSearchParams(window.location.search);
       const orderMessage = localStorage.getItem('natartCheckoutMessage');
 
       if (params.get('checkout') === 'true' && orderMessage) {
-        // Open chat popup
         setTimeout(() => {
           document.getElementById('chatPopup').classList.add('open');
         }, 500);
 
-        // Add order info
         const orderDisplay = document.getElementById('orderInfo');
-        orderDisplay.innerHTML = `<div class="order-info">${orderMessage.replace(/\n/g, '<br>')}</div>`;
+        orderDisplay.innerHTML = `<div style="background: #fff8e8; padding: 12px; margin-bottom: 10px; border-radius: 8px; font-size: 0.85rem; color: #666; border-left: 4px solid var(--gold); max-height: 150px; overflow-y: auto;">${orderMessage.replace(/\n/g, '<br>')}</div>`;
 
-        // Add order to form
         const form = document.querySelector('.contact-form');
         const existingInput = form.querySelector('input[name="შეკვეთა"]');
         if (existingInput) existingInput.remove();
@@ -1104,22 +914,17 @@
         orderInput.value = orderMessage;
         form.appendChild(orderInput);
 
-        // Clear localStorage
         localStorage.removeItem('natartCheckoutMessage');
+        localStorage.removeItem('natartCheckoutTotal');
         localStorage.removeItem('natartCart');
         cart = [];
         updateCartCount();
 
-        // Clean URL
         window.history.replaceState({}, document.title, window.location.pathname);
       }
     }
 
-    // Init
-    updateCartCount();
-    renderCart();
     checkForCheckout();
   </script>
-
 </body>
 </html>
