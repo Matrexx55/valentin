@@ -232,10 +232,17 @@
     .checkout-btn:hover { background: #6e5006; }
 
     .chat-popup {
-      position: fixed; bottom: 100px; right: 28px;
-      width: 320px; background: var(--white);
+      position: fixed; bottom: 28px; right: 28px;
+      width: 90%; max-width: 320px; background: var(--white);
       border-radius: var(--radius); box-shadow: 0 12px 40px rgba(139,101,8,0.18);
       z-index: 998; overflow: hidden; display: none; flex-direction: column;
+      max-height: 80vh;
+    }
+    
+    @media (max-width: 480px) {
+      .chat-popup {
+        width: calc(100vw - 32px); bottom: 16px; right: 16px;
+      }
     }
     .chat-popup.open { display: flex; }
     .chat-popup-header {
@@ -253,9 +260,10 @@
     .chat-popup .contact-form input,
     .chat-popup .contact-form textarea {
       width: 100%; padding: 10px 14px; border: 1px solid #f0d0d0;
-      border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 0.9rem;
+      border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 1rem;
       color: var(--text-dark); background: var(--bg); outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s; -webkit-appearance: none;
+      appearance: none;
     }
     .chat-popup .contact-form input:focus,
     .chat-popup .contact-form textarea:focus { border-color: var(--gold-light); }
@@ -284,6 +292,7 @@
     <a href="index.html" class="logo-placeholder">NATART</a>
     <nav>
       <a href="index.html">მთავარი</a>
+      <a href="#sets" style="color: var(--gold);">სეტები</a>
       <a href="index.html#about">ჩვენს შესახებ</a>
       <a href="index.html#contact">საკონტაქტო</a>
       <div class="cart-icon" id="cartIcon">
