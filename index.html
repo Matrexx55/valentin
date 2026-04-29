@@ -726,6 +726,7 @@
       <div id="orderInfo"></div>
       <input type="text" name="სახელი" placeholder="თქვენი სახელი" required />
       <input type="email" name="მეილი" placeholder="თქვენი მეილი" required />
+      <input type="tel" name="ტელეფონი" placeholder="ტელეფონის ნომერი" required />
       <textarea name="შეტყობინება" placeholder="შეტყობინება" rows="4" required></textarea>
       <button type="submit">გაგზავნა</button>
     </form>
@@ -747,8 +748,6 @@
       }
       saveCart();
       updateCartCount();
-      document.getElementById('cartModal').classList.add('show');
-      renderCart();
     }
 
     function removeFromCart(productId) {
