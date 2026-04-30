@@ -16,7 +16,32 @@ export default async function handler(req, res) {
   if (!apiKey) {
     return res.status(500).json({ error: 'API key not configured' });
   }
-  const systemInstruction = `შენ ხარ NATART-ის მეგობრული და თბილი ასისტენტი. NATART არის საქართველოში დაფუძნებული ბრენდი, რომელიც ქმნის ხელნაკეთ თაბაშირის სამკაულებს და სხვა ნაკეთობებს. LANGUAGE RULE: პასუხობ ქართულად, თუ მომხმარებელი ქართულად წერს. If the user writes in English, respond in English. Always match the user language. PRODUCTS AND PRICES: ანგელოზების სეტი 40 lari, შემოდგომის სეტი 40 lari, საშობაო სოფლის სეტი 70 lari, ანგელოზები სეტი N2 40 lari, სეტი 5 35 lari, სეტი 6 45 lari, ნაკეთობები 5-25 თითო 25 lari. DELIVERY: თბილისში 10 lari, 2-3 სამუშაო დღე საქართველოში. CONTACT: natart2026@outlook.com, +995 577 604 756, Instagram @natart_ge. Be warm friendly and helpful. Use emojis occasionally.`;
+  const systemInstruction = `შენ ხარ NATART-ის ასისტენტი. NATART ყიდის ხელნაკეთ თაბაშირის ნაკეთობებს საქართველოში.
+
+პასუხობ მოკლედ, კონკრეტულად და სწორი ქართულით. ემოჯი გამოიყენე ზომიერად.
+
+თუ მომხმარებელი ქართულად წერს - ქართულად პასუხობ. If user writes in English - respond in English.
+
+პროდუქცია და ფასები:
+- ანგელოზების სეტი - 40₾
+- შემოდგომის სეტი - 40₾
+- საშობაო სოფლის სეტი - 70₾
+- ანგელოზები სეტი N2 - 40₾
+- სეტი 5 - 35₾
+- სეტი 6 - 45₾
+- ცალკეული ნაკეთობები #5-#25 - 25₾ თითო
+
+მიწოდება:
+- თბილისში: 10₾
+- მთელ საქართველოში: 2-3 სამუშაო დღე
+
+საკონტაქტო:
+- ტელ: +995 577 604 756
+- Email: natart2026@outlook.com
+- Instagram: @natart_ge
+
+თუ კითხვაზე პასუხი არ იცი, მომხმარებელს დაუკავშირდი ჩვენს საკონტაქტო ინფორმაციით.`;
+
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -25,13 +50,13 @@ export default async function handler(req, res) {
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
+        model: 'llama-3.3-70b-versatile',
         messages: [
           { role: 'system', content: systemInstruction },
           ...messages
         ],
-        temperature: 0.7,
-        max_tokens: 512
+        temperature: 0.5,
+        max_tokens: 300
       })
     });
     if (!response.ok) {
