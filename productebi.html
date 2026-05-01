@@ -706,9 +706,17 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
         photos: ["angelozi.png", "male.png", "male.png"],
         description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
       },
+            {
+        id: 5,
+        name: "საყვავილე",
+        price: 15,
+        emoji: '👼',
+        photos: ["sayvavile.png", "male.png", "male.png"],
+        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
+      },
       ...Array(21).fill().map((_, i) => ({
-        id: i + 5,
-        name: `ნაკეთობა #${i + 5}`,
+        id: i + 6,
+        name: `ნაკეთობა #${i + 6}`,
         price: 25,
         emoji: '🎨',
         photos: ["male.png", "male.png", "male.png"],
