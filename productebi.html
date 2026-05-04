@@ -1,4 +1,3 @@
-cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
 <!DOCTYPE html>
 <html lang="ka">
 <head>
@@ -128,41 +127,25 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
       transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
     }
 
     .product-card:hover { transform: translateY(-5px); }
 
     .img-container {
       width: 100%;
-      height: 240px;
-      background: #f0f0f0;
+      height: 200px;
+      background: #fff8f8;
       overflow: hidden;
-      position: relative;
-    }
-
-    .img-container::after {
-      content: '🔍 დეტალები';
-      position: absolute;
-      inset: 0;
-      background: rgba(139,101,8,0.7);
-      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Jost', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      opacity: 0;
-      transition: opacity 0.3s;
     }
-
-    .product-card:hover .img-container::after { opacity: 1; }
 
     .product-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      padding: 8px;
     }
 
     .product-info {
@@ -182,29 +165,18 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
 
     .product-price { font-weight: 600; color: #333; margin-bottom: 15px; }
 
-    .card-buttons { display: flex; gap: 8px; }
-
-    .btn-details {
-      flex: 1; padding: 10px;
-      background: transparent; color: var(--gold);
-      border: 2px solid var(--gold);
-      border-radius: 8px; cursor: pointer; font-weight: 600;
-      transition: all 0.2s; font-size: 0.85rem;
-    }
-    .btn-details:hover { background: var(--gold); color: white; }
-
     .btn-add {
-      flex: 1; padding: 10px;
+      display: block; width: 100%; padding: 10px;
       background: var(--gold); color: white; border: none;
       border-radius: 8px; cursor: pointer; font-weight: 600;
-      transition: background 0.2s; font-size: 0.85rem;
+      transition: background 0.2s;
     }
+
     .btn-add:hover { background: #6e5006; }
 
-    /* ── Cart Modal ── */
     .modal {
       display: none; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: rgba(0,0,0,0.6);
+      width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6);
       z-index: 1000; align-items: center; justify-content: center; padding: 20px;
       overflow-y: auto;
     }
@@ -212,10 +184,11 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
     .modal-content {
       background: var(--white); border-radius: var(--radius);
       max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto;
-      display: flex; flex-direction: column; margin: auto;
+      display: flex; flex-direction: column;
+      margin: auto;
     }
     .modal-header {
-      background: var(--gold); color: white; padding: 20px;
+      background: var(--gold); color: white; padding: 20px; 
       display: flex; justify-content: space-between; align-items: center;
       font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
       font-weight: 700; flex-shrink: 0;
@@ -224,24 +197,36 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
       background: none; border: none; color: white;
       font-size: 1.5rem; cursor: pointer; line-height: 1;
     }
-    .modal-body { padding: 30px; flex: 1; overflow-y: auto; }
+    .modal-body {
+      padding: 30px; flex: 1; overflow-y: auto;
+    }
 
-    .empty-cart { text-align: center; padding: 50px 20px; color: #999; }
+    .empty-cart {
+      text-align: center; padding: 50px 20px; color: #999;
+    }
     .empty-cart i { font-size: 3rem; margin-bottom: 20px; opacity: 0.5; }
+
     .cart-items { margin-bottom: 20px; }
     .cart-item {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 15px; padding: 15px;
-      border: 1px solid #eee; border-radius: 8px;
-      margin-bottom: 12px; align-items: center; overflow: hidden;
+      display: grid; 
+      grid-template-columns: 2fr 1fr 1fr; 
+      gap: 15px;
+      padding: 15px; 
+      border: 1px solid #eee; 
+      border-radius: 8px;
+      margin-bottom: 12px; 
+      align-items: center;
+      overflow: hidden;
     }
     .item-name { font-weight: 600; }
     .item-price { text-align: center; font-weight: 600; }
-    .qty-control { display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .qty-control {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
     .qty-btn {
       background: var(--gold); color: white; border: none;
-      width: 28px; height: 28px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;
+      width: 28px; height: 28px; border-radius: 4px;
+      cursor: pointer; font-size: 0.9rem;
     }
     .qty-btn:hover { background: #6e5006; }
     .remove-btn {
@@ -250,14 +235,18 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
       font-size: 0.75rem; width: 100%;
     }
     .remove-btn:hover { background: #b71c1c; }
+    
     .cart-summary {
       background: var(--bg); padding: 20px; border-radius: 8px; margin-bottom: 20px;
     }
-    .summary-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .summary-row {
+      display: flex; justify-content: space-between; margin-bottom: 10px;
+    }
     .summary-row.total {
       border-top: 2px solid var(--gold); padding-top: 10px;
       font-size: 1.2rem; font-weight: 700; color: var(--gold);
     }
+    
     .checkout-btn {
       width: 100%; padding: 16px; background: var(--gold);
       color: white; border: none; border-radius: 8px;
@@ -265,213 +254,245 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
     }
     .checkout-btn:hover { background: #6e5006; }
 
-    /* ── Product Detail Modal ── */
-    #productModal {
-      display: none; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: rgba(0,0,0,0.7);
-      z-index: 2000; align-items: center; justify-content: center; padding: 20px;
-    }
-    #productModal.show { display: flex; }
-
-    .product-modal-content {
-      background: var(--white); border-radius: var(--radius);
-      max-width: 750px; width: 100%; max-height: 90vh;
-      overflow-y: auto; margin: auto; position: relative;
-    }
-
-    .product-modal-close {
-      position: absolute; top: 15px; right: 15px;
-      background: var(--gold); color: white; border: none;
-      width: 36px; height: 36px; border-radius: 50%;
-      font-size: 1.1rem; cursor: pointer; z-index: 10;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    /* Gallery */
-    .gallery {
-      position: relative;
-      background: #f8f0f0;
-      border-radius: var(--radius) var(--radius) 0 0;
-      overflow: hidden;
-    }
-
-    .gallery-main {
-      width: 100%;
-      height: 360px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.9); border: none;
-      width: 40px; height: 40px; border-radius: 50%;
-      font-size: 1rem; cursor: pointer; color: var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: background 0.2s;
-    }
-    .gallery-nav:hover { background: white; }
-    .gallery-nav.prev { left: 12px; }
-    .gallery-nav.next { right: 12px; }
-
-    .gallery-dots {
-      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 6px;
-    }
-    .gallery-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255,255,255,0.6); cursor: pointer;
-      border: none; transition: background 0.2s;
-    }
-    .gallery-dot.active { background: white; }
-
-    .gallery-thumbs {
-      display: flex; gap: 8px; padding: 10px 15px;
-      background: #f8f0f0; overflow-x: auto;
-    }
-    .gallery-thumb {
-      width: 60px; height: 60px; border-radius: 6px;
-      object-fit: cover; cursor: pointer; border: 2px solid transparent;
-      transition: border-color 0.2s; flex-shrink: 0;
-    }
-    .gallery-thumb.active { border-color: var(--gold); }
-
-    /* Product detail info */
-    .product-detail-info { padding: 25px; }
-    .product-detail-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; font-weight: 700; color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .product-detail-price {
-      font-size: 1.4rem; font-weight: 700; color: #333;
-      margin-bottom: 15px;
-    }
-    .product-detail-desc {
-      font-size: 0.95rem; color: #555; line-height: 1.8;
-      margin-bottom: 25px;
-      white-space: pre-line;
-    }
-    .btn-add-detail {
-      width: 100%; padding: 14px;
-      background: var(--gold); color: white; border: none;
-      border-radius: 8px; font-size: 1rem; font-weight: 600;
-      cursor: pointer; transition: background 0.2s;
-    }
-    .btn-add-detail:hover { background: #6e5006; }
-
-    /* Contact form popup */
+    /* Contact form popup (existing) */
     .chat-popup {
-      position: fixed; bottom: 100px; right: 28px; width: 320px;
-      background: var(--white); border-radius: var(--radius);
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 320px;
+      background: var(--white);
+      border-radius: var(--radius);
       box-shadow: 0 12px 40px rgba(139,101,8,0.18);
-      z-index: 998; overflow: hidden; display: none; flex-direction: column;
+      z-index: 998;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
     }
     .chat-popup.open { display: flex; }
     .chat-popup-header {
-      background: var(--gold); color: #fff; padding: 14px 18px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600;
+      background: var(--gold);
+      color: #fff;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
     }
-    .chat-close { background: none; border: none; color: #fff; font-size: 1rem; cursor: pointer; }
+    .chat-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      line-height: 1;
+    }
     .chat-popup .contact-form {
-      padding: 18px; display: flex; flex-direction: column; gap: 10px;
-      overflow-y: auto; max-height: 70vh;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      max-height: 70vh;
     }
     .chat-popup .contact-form input,
     .chat-popup .contact-form textarea {
-      width: 100%; padding: 12px 14px; border: 1px solid #f0d0d0;
-      border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 16px;
-      color: var(--text-dark); background: var(--bg); outline: none;
-      transition: border-color 0.2s; box-sizing: border-box;
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #f0d0d0;
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      color: var(--text-dark);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      box-sizing: border-box;
     }
     .chat-popup .contact-form input:focus,
     .chat-popup .contact-form textarea:focus { border-color: var(--gold-light); }
     .chat-popup .contact-form textarea { resize: vertical; min-height: 80px; }
     .chat-popup .contact-form button {
-      background: var(--gold); color: #fff; border: none; padding: 12px 0;
-      border-radius: 8px; font-family: 'Jost', sans-serif; font-size: 0.95rem;
-      font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: 5px;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 5px;
     }
     .chat-popup .contact-form button:hover { background: #6e5006; }
     .order-info {
-      background: #fff8e8; padding: 12px; margin-bottom: 10px; border-radius: 8px;
-      font-size: 0.85rem; color: #666; border-left: 4px solid var(--gold);
-      max-height: 150px; overflow-y: auto;
+      background: #fff8e8;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #666;
+      border-left: 4px solid var(--gold);
+      max-height: 150px;
+      overflow-y: auto;
     }
 
-    /* AI Chat */
+    /* ── AI Chat Widget Styles ── */
     :root {
-      --nw-gold: #8B6508; --nw-gold-light: #C49A1A;
-      --nw-gold-pale: #FFF8E8; --nw-white: #ffffff;
-      --nw-bg: #FFF5F5; --nw-text: #4A4A4A;
-      --nw-radius: 16px; --nw-shadow: 0 16px 60px rgba(139,101,8,0.22);
+      --nw-gold: #8B6508;
+      --nw-gold-light: #C49A1A;
+      --nw-gold-pale: #FFF8E8;
+      --nw-white: #ffffff;
+      --nw-bg: #FFF5F5;
+      --nw-text: #4A4A4A;
+      --nw-radius: 16px;
+      --nw-shadow: 0 16px 60px rgba(139,101,8,0.22);
     }
+
     #nw-fab {
-      position: fixed; bottom: 28px; right: 96px;
-      width: 58px; height: 58px; border-radius: 50%;
+      position: fixed;
+      bottom: 28px;
+      right: 96px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
       background: linear-gradient(135deg, var(--nw-gold-light), var(--nw-gold));
-      color: #fff; font-size: 1.45rem; border: none; cursor: pointer;
-      box-shadow: 0 6px 24px rgba(139,101,8,0.38); z-index: 9998;
+      color: #fff;
+      font-size: 1.45rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(139,101,8,0.38);
+      z-index: 9998;
       transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    #nw-fab:hover { transform: scale(1.1) translateY(-2px); }
+    #nw-fab:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 10px 32px rgba(139,101,8,0.45);
+    }
     #nw-fab .nw-fab-pulse {
-      position: absolute; top: 0; right: 0;
-      width: 14px; height: 14px; background: #d32f2f;
-      border-radius: 50%; border: 2px solid white; animation: nw-pulse 2s infinite;
+      position: absolute;
+      top: 0; right: 0;
+      width: 14px; height: 14px;
+      background: #d32f2f;
+      border-radius: 50%;
+      border: 2px solid white;
+      animation: nw-pulse 2s infinite;
     }
     @keyframes nw-pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.3); opacity: 0.7; }
     }
+
     #nw-panel {
-      position: fixed; bottom: 100px; right: 28px; width: 360px; max-height: 580px;
-      background: var(--nw-white); border-radius: var(--nw-radius);
-      box-shadow: var(--nw-shadow); z-index: 9997;
-      display: flex; flex-direction: column; overflow: hidden;
-      transform: scale(0.85) translateY(20px); transform-origin: bottom right;
-      opacity: 0; pointer-events: none;
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 360px;
+      max-height: 580px;
+      background: var(--nw-white);
+      border-radius: var(--nw-radius);
+      box-shadow: var(--nw-shadow);
+      z-index: 9997;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.85) translateY(20px);
+      transform-origin: bottom right;
+      opacity: 0;
+      pointer-events: none;
       transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), opacity 0.25s ease;
       border: 1px solid rgba(139,101,8,0.12);
     }
-    #nw-panel.nw-open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+    #nw-panel.nw-open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
     .nw-header {
       background: linear-gradient(135deg, var(--nw-gold) 0%, var(--nw-gold-light) 100%);
-      padding: 16px 18px; display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
     }
     .nw-header-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(255,255,255,0.2); display: flex; align-items: center;
-      justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
       border: 2px solid rgba(255,255,255,0.35);
     }
     .nw-header-info { flex: 1; }
     .nw-header-name {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
-      font-weight: 700; color: white; letter-spacing: 0.5px; line-height: 1.2;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
     }
     .nw-header-status {
-      font-family: 'Jost', sans-serif; font-size: 0.72rem;
-      color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 5px; margin-top: 2px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
     }
-    .nw-status-dot { width: 7px; height: 7px; border-radius: 50%; background: #7CFC00; box-shadow: 0 0 6px #7CFC00; }
+    .nw-status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #7CFC00;
+      box-shadow: 0 0 6px #7CFC00;
+    }
     .nw-close-btn {
-      background: rgba(255,255,255,0.15); border: none; color: white;
-      width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      transition: background 0.2s;
     }
     .nw-close-btn:hover { background: rgba(255,255,255,0.3); }
+
     .nw-messages {
-      flex: 1; overflow-y: auto; padding: 16px;
-      display: flex; flex-direction: column; gap: 10px;
-      background: var(--nw-bg); scroll-behavior: smooth;
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--nw-bg);
+      scroll-behavior: smooth;
     }
+    .nw-messages::-webkit-scrollbar { width: 4px; }
+    .nw-messages::-webkit-scrollbar-thumb {
+      background: rgba(139,101,8,0.2);
+      border-radius: 4px;
+    }
+
     .nw-msg {
-      max-width: 80%; padding: 10px 14px; border-radius: 14px;
-      font-family: 'Jost', sans-serif; font-size: 0.875rem; line-height: 1.55;
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.55;
       animation: nw-fadeup 0.25s ease both;
     }
     @keyframes nw-fadeup {
@@ -479,23 +500,37 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
       to   { opacity: 1; transform: translateY(0); }
     }
     .nw-msg.nw-bot {
-      background: var(--nw-white); color: var(--nw-text);
-      border-radius: 14px 14px 14px 4px; align-self: flex-start;
-      box-shadow: 0 2px 10px rgba(139,101,8,0.08); border: 1px solid rgba(139,101,8,0.08);
+      background: var(--nw-white);
+      color: var(--nw-text);
+      border-radius: 14px 14px 14px 4px;
+      align-self: flex-start;
+      box-shadow: 0 2px 10px rgba(139,101,8,0.08);
+      border: 1px solid rgba(139,101,8,0.08);
     }
     .nw-msg.nw-user {
       background: linear-gradient(135deg, var(--nw-gold), var(--nw-gold-light));
-      color: white; border-radius: 14px 14px 4px 14px; align-self: flex-end;
+      color: white;
+      border-radius: 14px 14px 4px 14px;
+      align-self: flex-end;
       box-shadow: 0 3px 14px rgba(139,101,8,0.3);
     }
+
     .nw-typing {
-      display: flex; align-items: center; gap: 5px; padding: 12px 14px;
-      background: var(--nw-white); border-radius: 14px 14px 14px 4px;
-      align-self: flex-start; box-shadow: 0 2px 10px rgba(139,101,8,0.08);
-      border: 1px solid rgba(139,101,8,0.08); width: fit-content;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 12px 14px;
+      background: var(--nw-white);
+      border-radius: 14px 14px 14px 4px;
+      align-self: flex-start;
+      box-shadow: 0 2px 10px rgba(139,101,8,0.08);
+      border: 1px solid rgba(139,101,8,0.08);
+      width: fit-content;
     }
     .nw-typing span {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--nw-gold-light);
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--nw-gold-light);
       animation: nw-bounce 1.2s infinite;
     }
     .nw-typing span:nth-child(2) { animation-delay: 0.2s; }
@@ -504,52 +539,128 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
       0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
       40%            { transform: translateY(-6px); opacity: 1; }
     }
+
     .nw-chips {
-      display: flex; flex-wrap: wrap; gap: 7px;
-      padding: 10px 14px 4px; background: var(--nw-bg); flex-shrink: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      padding: 10px 14px 4px;
+      background: var(--nw-bg);
+      flex-shrink: 0;
     }
     .nw-chip {
-      background: var(--nw-white); color: var(--nw-gold);
-      border: 1.5px solid rgba(139,101,8,0.3); border-radius: 20px;
-      padding: 5px 13px; font-family: 'Jost', sans-serif; font-size: 0.78rem;
-      font-weight: 500; cursor: pointer; transition: all 0.18s; white-space: nowrap;
+      background: var(--nw-white);
+      color: var(--nw-gold);
+      border: 1.5px solid rgba(139,101,8,0.3);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
     }
-    .nw-chip:hover { background: var(--nw-gold); color: white; border-color: var(--nw-gold); }
+    .nw-chip:hover {
+      background: var(--nw-gold);
+      color: white;
+      border-color: var(--nw-gold);
+    }
+
     .nw-input-bar {
-      display: flex; align-items: center; gap: 8px; padding: 12px 14px;
-      background: var(--nw-white); border-top: 1px solid rgba(139,101,8,0.1); flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      background: var(--nw-white);
+      border-top: 1px solid rgba(139,101,8,0.1);
+      flex-shrink: 0;
     }
     .nw-input {
-      flex: 1; border: 1.5px solid rgba(139,101,8,0.2); border-radius: 25px;
-      padding: 9px 16px; font-family: 'Jost', sans-serif; font-size: 0.875rem;
-      color: var(--nw-text); background: var(--nw-bg); outline: none; transition: border-color 0.2s;
+      flex: 1;
+      border: 1.5px solid rgba(139,101,8,0.2);
+      border-radius: 25px;
+      padding: 9px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.875rem;
+      color: var(--nw-text);
+      background: var(--nw-bg);
+      outline: none;
+      transition: border-color 0.2s;
     }
     .nw-input:focus { border-color: var(--nw-gold-light); }
+    .nw-input::placeholder { color: #bbb; }
     .nw-send-btn {
-      width: 38px; height: 38px; border-radius: 50%;
+      width: 38px; height: 38px;
+      border-radius: 50%;
       background: linear-gradient(135deg, var(--nw-gold), var(--nw-gold-light));
-      border: none; color: white; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
-      flex-shrink: 0; transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 3px 12px rgba(139,101,8,0.3);
     }
-    .nw-send-btn:hover { transform: scale(1.1); }
-    .nw-send-btn:disabled { opacity: 0.5; transform: none; cursor: not-allowed; }
+    .nw-send-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 16px rgba(139,101,8,0.4);
+    }
+    .nw-send-btn:disabled {
+      opacity: 0.5;
+      transform: none;
+      cursor: not-allowed;
+    }
     .nw-footer-note {
-      text-align: center; font-family: 'Jost', sans-serif; font-size: 0.68rem;
-      color: #cbb; padding: 5px 0 8px; background: var(--nw-white); letter-spacing: 0.3px;
+      text-align: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      color: #cbb;
+      padding: 5px 0 8px;
+      background: var(--nw-white);
+      letter-spacing: 0.3px;
     }
 
     @media (max-width: 768px) {
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-      .gallery-main { height: 260px; }
+      header { padding: 12px 5%; }
+      .logo-placeholder { font-size: 1.5rem; letter-spacing: 1px; }
+      nav { gap: 12px; }
+      nav a { font-size: 0.8rem; }
+      .shop-header h1 { font-size: 2rem; }
+      .shop-container { padding: 30px 5%; }
+      .cart-item { grid-template-columns: 1.5fr 1fr; gap: 10px; }
+      .modal-body { padding: 20px; }
+      .img-container { height: 160px; }
     }
+
     @media (max-width: 550px) {
       .products-grid { grid-template-columns: 1fr; gap: 12px; }
-      .gallery-main { height: 220px; }
-      .product-detail-name { font-size: 1.5rem; }
+      header { padding: 10px 4%; }
+      .logo-placeholder { font-size: 1.2rem; }
+      nav { gap: 8px; width: 100%; justify-content: space-between; }
+      nav a { font-size: 0.7rem; }
+      .shop-header h1 { font-size: 1.5rem; margin-bottom: 5px; }
+      .shop-header p { font-size: 0.85rem; margin-bottom: 20px; }
+      .shop-container { padding: 20px 4%; }
+      .product-name { font-size: 1.1rem; }
+      .product-price { font-size: 0.9rem; }
+      .btn-add { padding: 8px; font-size: 0.85rem; }
+      .img-container { height: 140px; }
+      .product-info { padding: 15px; }
+      .cart-item { grid-template-columns: 1fr; gap: 8px; }
+      .cart-item div:nth-child(n+2) { font-size: 0.9rem; }
+      .qty-control { justify-content: flex-start; }
+      .modal-body { padding: 15px; }
+      .modal-header { padding: 15px; font-size: 1rem; }
+      .remove-btn { padding: 5px 8px; font-size: 0.7rem; }
     }
+
     @media (max-width: 480px) {
+      .chat-popup { width: calc(100vw - 32px); right: 16px; bottom: 16px; }
+      .chat-popup .contact-form input,
+      .chat-popup .contact-form textarea { font-size: 16px; padding: 14px 14px; }
       #nw-panel { width: calc(100vw - 24px); right: 12px; bottom: 90px; max-height: 72vh; }
       #nw-fab { right: 80px; bottom: 16px; }
     }
@@ -592,31 +703,7 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
     </div>
   </div>
 
-  <!-- Product Detail Modal -->
-  <div id="productModal">
-    <div class="product-modal-content">
-      <button class="product-modal-close" id="productModalClose">✕</button>
-
-      <div class="gallery">
-        <img class="gallery-main" id="galleryMain" src="" alt="">
-        <button class="gallery-nav prev" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
-        <button class="gallery-nav next" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
-        <div class="gallery-dots" id="galleryDots"></div>
-      </div>
-      <div class="gallery-thumbs" id="galleryThumbs"></div>
-
-      <div class="product-detail-info">
-        <h2 class="product-detail-name" id="detailName"></h2>
-        <div class="product-detail-price" id="detailPrice"></div>
-        <p class="product-detail-desc" id="detailDesc"></p>
-        <button class="btn-add-detail" id="detailAddBtn">
-          <i class="fas fa-cart-plus"></i> კალათაში დამატება
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Form Popup -->
+  <!-- Contact Form Popup (existing) -->
   <div class="chat-popup" id="chatPopup">
     <div class="chat-popup-header">
       <span>დაგვიკავშირდით</span>
@@ -632,14 +719,14 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
     </form>
   </div>
 
-  <!-- AI Chat FAB -->
+  <!-- AI Chat Widget FAB -->
   <button id="nw-fab" aria-label="AI ასისტენტი">
     ✨
     <div class="nw-fab-pulse"></div>
   </button>
 
   <!-- AI Chat Panel -->
-  <div id="nw-panel">
+  <div id="nw-panel" role="dialog" aria-label="NATART AI Chat">
     <div class="nw-header">
       <div class="nw-header-avatar">🕊️</div>
       <div class="nw-header-info">
@@ -649,180 +736,70 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
           ონლაინ • ყოველთვის მზად
         </div>
       </div>
-      <button class="nw-close-btn" id="nw-close">✕</button>
+      <button class="nw-close-btn" id="nw-close" aria-label="დახურვა">✕</button>
     </div>
+
     <div class="nw-messages" id="nw-messages"></div>
+
     <div class="nw-chips" id="nw-chips">
       <button class="nw-chip" data-msg="პროდუქცია">🎨 პროდუქცია</button>
       <button class="nw-chip" data-msg="ფასები">💰 ფასები</button>
       <button class="nw-chip" data-msg="მიწოდება">🚚 მიწოდება</button>
       <button class="nw-chip" data-msg="საკონტაქტო ინფორმაცია">📞 კონტაქტი</button>
     </div>
+
     <div class="nw-input-bar">
       <input class="nw-input" id="nw-input" type="text" placeholder="შეტყობინება..." autocomplete="off" maxlength="500" />
-      <button class="nw-send-btn" id="nw-send">
+      <button class="nw-send-btn" id="nw-send" aria-label="გაგზავნა">
         <i class="fas fa-paper-plane"></i>
       </button>
     </div>
-    <div class="nw-footer-note">✦ NATART AI · Powered by Groq</div>
+    <div class="nw-footer-note">✦ NATART AI · Powered by Gemini</div>
   </div>
 
   <script>
-    /* ══════════════════════════════════════════
-       პროდუქტების მონაცემები — შეავსე თვითონ!
-       photos: [] — ჩაწერე ფოტოების სახელები
-       description: "" — ჩაწერე აღწერა
-    ══════════════════════════════════════════ */
+    /* ── Products ── */
     const products = [
-      {
-        id: 1,
-        name: "დიდი სასანთლე",
-        price: 25,
-        emoji: '👼',
-        photos: ["sasantledid.png", "sasantledid.png", "male.png"],
-        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
-      },
-      {
-        id: 2,
-        name: " პატარა სასანთლე",
-        price: 20,
-        emoji: '🍂',
-        photos: ["sasantlepat.png", "sasantlepat.png", "male.png"],
-        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
-      },
-      {
-        id: 3,
-        name: "პატარა ანგელოზი",
-        price: 10,
-        emoji: '🎄',
-        photos: ["angelozi5.png", "angeloziukan.png", "sashobao.png"],
-        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
-      },
-      {
-        id: 4,
-        name: "დიდი ანგელოზი",
-        price: 15,
-        emoji: '👼',
-        photos: ["angelozi.png", "male.png", "male.png"],
-        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
-      },
-            {
-        id: 5,
-        name: "საყვავილე",
-        price: 15,
-        emoji: '👼',
-        photos: ["sayvavile.png", "male.png", "male.png"],
-        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
-      },
+      { id: 1, name: "ანგელოზების სეტი", price: 40, img: "angelozebi.png", emoji: '👼' },
+      { id: 2, name: "შემოდგომის სეტი", price: 40, img: "shemodgoma.png", emoji: '🍂' },
+      { id: 3, name: "საშობაო სოფლის სეტი", price: 70, img: "sashobao.png", emoji: '🎄' },
+      { id: 4, name: "ანგელოზები N2", price: 40, img: "angelozebi2.png", emoji: '👼' },
       ...Array(21).fill().map((_, i) => ({
-        id: i + 6,
-        name: `ნაკეთობა #${i + 6}`,
+        id: i + 5,
+        name: `ნაკეთობა #${i + 5}`,
         price: 25,
-        emoji: '🎨',
-        photos: ["male.png", "male.png", "male.png"],
-        description: "აღწერა დაამატე აქ...\n\n• მასალა: თაბაშირი\n• ზომა: ...\n• ხელნაკეთი"
+        img: "male.png",
+        emoji: '🎨'
       }))
     ];
 
-    /* ── Cart ── */
     let cart = JSON.parse(localStorage.getItem('natartCart')) || [];
 
     function renderProducts() {
       const grid = document.getElementById('product-list');
       grid.innerHTML = products.map(p => `
-        <div class="product-card" onclick="openProductModal(${p.id})">
+        <div class="product-card">
           <div class="img-container">
-            <img src="${p.photos[0]}" class="product-img" onerror="this.src='https://via.placeholder.com/250'">
+            <img src="${p.img}" class="product-img" onerror="this.src='https://via.placeholder.com/250'">
           </div>
           <div class="product-info">
             <h3 class="product-name">${p.name}</h3>
             <p class="product-price">${p.price}₾</p>
-            <div class="card-buttons">
-              <button class="btn-details" onclick="event.stopPropagation(); openProductModal(${p.id})">
-                <i class="fas fa-eye"></i> დეტალები
-              </button>
-              <button class="btn-add" onclick="event.stopPropagation(); addToCart(${p.id})">
-                <i class="fas fa-cart-plus"></i> კალათაში
-              </button>
-            </div>
+            <button class="btn-add" onclick="addToCart(${p.id})">
+              <i class="fas fa-cart-plus"></i> კალათაში
+            </button>
           </div>
         </div>
       `).join('');
     }
 
-    /* ── Product Detail Modal ── */
-    let currentProduct = null;
-    let currentPhotoIndex = 0;
-
-    function openProductModal(productId) {
-      currentProduct = products.find(p => p.id === productId);
-      currentPhotoIndex = 0;
-      updateGallery();
-
-      document.getElementById('detailName').textContent = currentProduct.name;
-      document.getElementById('detailPrice').textContent = currentProduct.price + '₾';
-      document.getElementById('detailDesc').textContent = currentProduct.description;
-      document.getElementById('detailAddBtn').onclick = () => {
-        addToCart(currentProduct.id);
-        closeProductModal();
-      };
-
-      document.getElementById('productModal').classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeProductModal() {
-      document.getElementById('productModal').classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    function updateGallery() {
-      const photos = currentProduct.photos;
-      const main = document.getElementById('galleryMain');
-      main.src = photos[currentPhotoIndex];
-      main.onerror = () => { main.src = 'https://via.placeholder.com/400x300'; };
-
-      // dots
-      const dots = document.getElementById('galleryDots');
-      dots.innerHTML = photos.map((_, i) =>
-        `<button class="gallery-dot ${i === currentPhotoIndex ? 'active' : ''}" onclick="goToPhoto(${i})"></button>`
-      ).join('');
-
-      // thumbs
-      const thumbs = document.getElementById('galleryThumbs');
-      thumbs.innerHTML = photos.map((src, i) =>
-        `<img src="${src}" class="gallery-thumb ${i === currentPhotoIndex ? 'active' : ''}"
-          onclick="goToPhoto(${i})"
-          onerror="this.src='https://via.placeholder.com/60'">`
-      ).join('');
-    }
-
-    function goToPhoto(index) {
-      currentPhotoIndex = index;
-      updateGallery();
-    }
-
-    document.getElementById('galleryPrev').onclick = () => {
-      const len = currentProduct.photos.length;
-      currentPhotoIndex = (currentPhotoIndex - 1 + len) % len;
-      updateGallery();
-    };
-    document.getElementById('galleryNext').onclick = () => {
-      currentPhotoIndex = (currentPhotoIndex + 1) % currentProduct.photos.length;
-      updateGallery();
-    };
-    document.getElementById('productModalClose').onclick = closeProductModal;
-    document.getElementById('productModal').addEventListener('click', e => {
-      if (e.target.id === 'productModal') closeProductModal();
-    });
-
-    /* ── Cart Functions ── */
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
       const existing = cart.find(item => item.id === productId);
       if (existing) { existing.qty++; }
       else { cart.push({ ...product, qty: 1 }); }
-      saveCart(); updateCartCount();
+      saveCart();
+      updateCartCount();
     }
 
     function removeFromCart(productId) {
@@ -844,7 +821,8 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
       const summaryDiv = document.getElementById('cartSummaryContainer');
       if (cart.length === 0) {
         itemsDiv.innerHTML = '<div class="empty-cart"><i class="fas fa-shopping-cart"></i><p>კალათა ცარიელია</p></div>';
-        summaryDiv.innerHTML = ''; return;
+        summaryDiv.innerHTML = '';
+        return;
       }
       itemsDiv.innerHTML = `<div class="cart-items">${cart.map(item => `
         <div class="cart-item">
@@ -909,18 +887,22 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
     renderProducts();
     updateCartCount();
 
-    /* ── AI Chat ── */
+    /* ── AI Chat Widget ── */
     (function () {
       const ENDPOINT = '/api/chat';
       const GREETING = 'გამარჯობა! 👋 მე ვარ NATART-ის ასისტენტი. რით შემიძლია დაგეხმაროთ?\n\nშეგიძლიათ გამოიყენოთ სწრაფი ღილაკები ან დამსვათ ნებისმიერი კითხვა! 🕊️';
-      const fab = document.getElementById('nw-fab');
-      const panel = document.getElementById('nw-panel');
+
+      const fab      = document.getElementById('nw-fab');
+      const panel    = document.getElementById('nw-panel');
       const closeBtn = document.getElementById('nw-close');
-      const msgArea = document.getElementById('nw-messages');
-      const input = document.getElementById('nw-input');
-      const sendBtn = document.getElementById('nw-send');
-      const chips = document.getElementById('nw-chips');
-      let history = [], isOpen = false, isBusy = false;
+      const msgArea  = document.getElementById('nw-messages');
+      const input    = document.getElementById('nw-input');
+      const sendBtn  = document.getElementById('nw-send');
+      const chips    = document.getElementById('nw-chips');
+
+      let history = [];
+      let isOpen  = false;
+      let isBusy  = false;
 
       function togglePanel() {
         isOpen = !isOpen;
@@ -928,12 +910,15 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
         if (isOpen && history.length === 0) appendMsg('bot', GREETING);
         if (isOpen) setTimeout(() => input.focus(), 300);
       }
+
       fab.addEventListener('click', togglePanel);
       closeBtn.addEventListener('click', () => { isOpen = true; togglePanel(); });
+
       chips.addEventListener('click', e => {
         const chip = e.target.closest('.nw-chip');
         if (chip) sendMessage(chip.dataset.msg);
       });
+
       input.addEventListener('keydown', e => {
         if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(input.value.trim()); }
       });
@@ -946,6 +931,7 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
         msgArea.appendChild(div);
         msgArea.scrollTop = msgArea.scrollHeight;
       }
+
       function showTyping() {
         const el = document.createElement('div');
         el.className = 'nw-typing'; el.id = 'nw-typing-indicator';
@@ -953,35 +939,41 @@ cat > /mnt/user-data/outputs/productebi.html << 'ENDOFFILE'
         msgArea.appendChild(el);
         msgArea.scrollTop = msgArea.scrollHeight;
       }
+
       function hideTyping() {
         const el = document.getElementById('nw-typing-indicator');
         if (el) el.remove();
       }
+
       async function sendMessage(text) {
         if (!text || isBusy) return;
-        input.value = ''; isBusy = true; sendBtn.disabled = true;
+        input.value = '';
+        isBusy = true;
+        sendBtn.disabled = true;
         appendMsg('user', text);
         history.push({ role: 'user', content: text });
         showTyping();
         try {
           const res = await fetch(ENDPOINT, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages: history })
           });
           hideTyping();
-          if (!res.ok) throw new Error();
+          if (!res.ok) throw new Error('Network error');
           const data = await res.json();
-          const reply = data.reply || 'მოხდა შეცდომა.';
+          const reply = data.reply || 'მოხდა შეცდომა. გთხოვთ სცადოთ კიდევ ერთხელ.';
           appendMsg('bot', reply);
           history.push({ role: 'assistant', content: reply });
-        } catch {
+        } catch (err) {
           hideTyping();
           appendMsg('bot', '⚠️ კავშირის შეცდომა. გთხოვთ კიდევ სცადოთ, ან დაგვიკავშირდით: +995 577 604 756');
         }
-        isBusy = false; sendBtn.disabled = false; input.focus();
+        isBusy = false;
+        sendBtn.disabled = false;
+        input.focus();
       }
     })();
   </script>
 </body>
 </html>
-ENDOFFILE
